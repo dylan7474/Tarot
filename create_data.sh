@@ -2,11 +2,16 @@
 set -euo pipefail
 
 OLLAMA_URL="${OLLAMA_URL:-http://localhost:11434}"
-OLLAMA_MODEL="${OLLAMA_MODEL:-llama3.1}"
+OLLAMA_MODEL_WAS_SET=0
+if [[ -n "${OLLAMA_MODEL+x}" ]]; then
+  OLLAMA_MODEL_WAS_SET=1
+fi
+OLLAMA_MODEL="${OLLAMA_MODEL:-}"
 OUTPUT_FILE="${OUTPUT_FILE:-data/assets/tarot-images.json}"
 SOURCE_FILE="${SOURCE_FILE:-}"
 REQUEST_DELAY_SECONDS="${REQUEST_DELAY_SECONDS:-0}"
 LIST_CARDS_ONLY=0
+LIST_MODELS_ONLY=0
 
 usage() {
   cat <<USAGE
@@ -14,7 +19,7 @@ Create an Ollama-enriched tarot card database for Cosmic Tarot.
 
 Environment variables:
   OLLAMA_URL              Ollama base URL. Default: http://localhost:11434
-  OLLAMA_MODEL            Local model name. Default: llama3.1
+  OLLAMA_MODEL            Local model name. If unset in an interactive terminal, choose from installed models.
   OUTPUT_FILE             Compatible JSON database to write. Default: data/assets/tarot-images.json
   SOURCE_FILE             Optional existing tarot-images.json to preserve images/metadata.
   REQUEST_DELAY_SECONDS   Optional pause between cards. Default: 0
@@ -22,8 +27,10 @@ Environment variables:
 Options:
   -h, --help             Show this help text.
   --list-cards           Print the canonical 78-card sequence and exit.
+  --list-models          Print installed Ollama models from OLLAMA_URL and exit.
 
 Example:
+  ./create_data.sh
   OLLAMA_MODEL=mistral ./create_data.sh
   OLLAMA_URL=http://ollama.lan:11434 OLLAMA_MODEL=llama3.1 OUTPUT_FILE=data/generated/tarot-images.json ./create_data.sh
 USAGE
@@ -34,13 +41,18 @@ if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
   exit 0
 fi
 
-if [[ "${1:-}" == "--list-cards" ]]; then
-  LIST_CARDS_ONLY=1
-fi
+for arg in "$@"; do
+  case "$arg" in
+    --list-cards) LIST_CARDS_ONLY=1 ;;
+    --list-models) LIST_MODELS_ONLY=1 ;;
+    -h|--help) ;;
+    *) echo "Unknown option: $arg" >&2; usage; exit 1 ;;
+  esac
+done
 
 command -v python3 >/dev/null 2>&1 || { echo "Python 3 is required to run this generator." >&2; exit 1; }
 
-export OLLAMA_URL OLLAMA_MODEL OUTPUT_FILE SOURCE_FILE REQUEST_DELAY_SECONDS LIST_CARDS_ONLY
+export OLLAMA_URL OLLAMA_MODEL OLLAMA_MODEL_WAS_SET OUTPUT_FILE SOURCE_FILE REQUEST_DELAY_SECONDS LIST_CARDS_ONLY LIST_MODELS_ONLY
 
 python3 <<'PYTHON'
 import json
@@ -52,11 +64,13 @@ import urllib.request
 from pathlib import Path
 
 ollama_url = os.environ.get('OLLAMA_URL', 'http://localhost:11434').rstrip('/')
-model = os.environ.get('OLLAMA_MODEL', 'llama3.1')
+model = os.environ.get('OLLAMA_MODEL', '').strip()
+model_was_set = os.environ.get('OLLAMA_MODEL_WAS_SET') == '1'
 output_file = Path(os.environ.get('OUTPUT_FILE', 'data/assets/tarot-images.json'))
 source_file = os.environ.get('SOURCE_FILE', '')
 delay_seconds = max(0.0, float(os.environ.get('REQUEST_DELAY_SECONDS', '0') or 0))
 list_cards_only = os.environ.get('LIST_CARDS_ONLY') == '1'
+list_models_only = os.environ.get('LIST_MODELS_ONLY') == '1'
 
 SUITS = ['wands', 'cups', 'swords', 'pentacles']
 RANKS = [
@@ -107,6 +121,71 @@ RANK_THEMES = {
     'Nine': ['culmination', 'resilience'], 'Ten': ['completion', 'burden'], 'Page': ['study', 'message'], 'Knight': ['pursuit', 'action'],
     'Queen': ['maturity', 'care'], 'King': ['mastery', 'leadership'],
 }
+
+
+
+def fetch_ollama_models():
+    request = urllib.request.Request(f'{ollama_url}/api/tags', method='GET')
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            payload = json.loads(response.read().decode('utf-8'))
+    except urllib.error.HTTPError as error:
+        raise RuntimeError(f'Ollama model list returned {error.code} {error.reason}') from error
+    except urllib.error.URLError as error:
+        raise RuntimeError(f'Could not connect to Ollama at {ollama_url}: {error.reason}') from error
+
+    models = payload.get('models', [])
+    names = []
+    for item in models:
+        name = item.get('name') if isinstance(item, dict) else None
+        if isinstance(name, str) and name.strip():
+            names.append(name.strip())
+    return sorted(names, key=str.lower)
+
+
+def print_numbered_models(models):
+    if not models:
+        print(f'No installed Ollama models were reported by {ollama_url}.')
+        return
+    print(f'Installed Ollama models at {ollama_url}:')
+    for index, model_name in enumerate(models, start=1):
+        print(f'{index:02d}. {model_name}')
+
+
+def select_ollama_model():
+    global model
+    if model:
+        return
+
+    models = fetch_ollama_models()
+    if not models:
+        raise RuntimeError(f'No Ollama models are installed at {ollama_url}. Run `ollama pull llama3.1` or set OLLAMA_MODEL to a remote model name.')
+
+    if not sys.stdin.isatty():
+        model = models[0]
+        print(f'OLLAMA_MODEL was not set and input is non-interactive; using installed model: {model}')
+        return
+
+    print_numbered_models(models)
+    while True:
+        choice = input(f'Select a model [1-{len(models)}]: ').strip()
+        if choice.isdigit():
+            index = int(choice)
+            if 1 <= index <= len(models):
+                model = models[index - 1]
+                print(f'Using Ollama model: {model}')
+                return
+        print('Please enter one of the numbered model choices.')
+
+
+def verify_selected_model():
+    if not model_was_set or list_models_only:
+        return
+    models = fetch_ollama_models()
+    model_aliases = {name.split(':', 1)[0] for name in models}
+    if model not in models and model not in model_aliases:
+        available = ', '.join(models) if models else 'none'
+        raise RuntimeError(f'Ollama model `{model}` is not installed at {ollama_url}. Installed models: {available}')
 
 
 def minor_keywords(rank_name, suit_name):
@@ -210,6 +289,13 @@ def main():
             print(f'{index:02d}. {card["name"]}')
         return
 
+    if list_models_only:
+        print_numbered_models(fetch_ollama_models())
+        return
+
+    select_ollama_model()
+    verify_selected_model()
+
     database = load_source_deck()
     cards = database.get('cards') if isinstance(database.get('cards'), list) else build_canonical_deck()
     print(f'Generating meanings for {len(cards)} cards with {model} at {ollama_url}')
@@ -246,6 +332,6 @@ try:
     main()
 except Exception as error:
     print(f'\nGeneration failed: {error}', file=sys.stderr)
-    print(f'Confirm Ollama is running and the model is available, e.g. `ollama pull {model}`.', file=sys.stderr)
+    print(f'Confirm Ollama is running and the selected model is available, e.g. `ollama pull llama3.1` or run `./create_data.sh --list-models`.', file=sys.stderr)
     sys.exit(1)
 PYTHON
