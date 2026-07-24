@@ -317,6 +317,17 @@ def parse_ollama_meanings(card, response_text):
     return upright, reversed_meanings
 
 
+def build_repair_prompt(card, previous_response):
+    preview = previous_response.strip().replace('\n', ' ')[:1200]
+    return (
+        'The previous answer did not include both required arrays. '
+        f'For {card["name"]}, respond with one minified JSON object only, using exactly: '
+        '{"upright":["sentence one","sentence two"],"reversed":["sentence one","sentence two"]}. '
+        'Keep any useful upright meaning, and add the missing reversed meanings if needed. '
+        f'Previous answer: {preview}'
+    )
+
+
 def build_prompt(card, retry=False):
     keywords = ', '.join(card.get('keywords') or [])
     if retry:
@@ -334,6 +345,15 @@ def build_prompt(card, retry=False):
         'Avoid markdown, fortune-telling certainty, and references to being an AI. '
         f'Keywords: {keywords}.'
     )
+
+
+def model_name_matches_requested(response_model):
+    if not isinstance(response_model, str) or not response_model.strip():
+        return True
+    response_model = response_model.strip()
+    if response_model == model:
+        return True
+    return ':' not in model and response_model.split(':', 1)[0] == model
 
 
 def request_ollama(prompt, temperature):
@@ -355,14 +375,27 @@ def request_ollama(prompt, temperature):
             payload = json.loads(response.read().decode('utf-8'))
     except urllib.error.HTTPError as error:
         raise RuntimeError(f'Ollama returned {error.code} {error.reason}') from error
+
+    response_model = payload.get('model')
+    if not model_name_matches_requested(response_model):
+        raise RuntimeError(f'Ollama answered with model `{response_model}` after `{model}` was requested.')
     return str(payload.get('response', '')).strip()
 
 
 def ask_ollama(card):
-    attempts = ((False, 0.7), (True, 0.2))
+    attempts = ((build_prompt(card), 0.7), (build_prompt(card, retry=True), 0.2))
     last_error = None
-    for retry, temperature in attempts:
-        response_text = request_ollama(build_prompt(card, retry=retry), temperature)
+    last_response = ''
+    for prompt, temperature in attempts:
+        response_text = request_ollama(prompt, temperature)
+        last_response = response_text
+        try:
+            return parse_ollama_meanings(card, response_text)
+        except ValueError as error:
+            last_error = error
+
+    if last_response:
+        response_text = request_ollama(build_repair_prompt(card, last_response), 0.0)
         try:
             return parse_ollama_meanings(card, response_text)
         except ValueError as error:
