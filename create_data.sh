@@ -242,14 +242,39 @@ def load_source_deck():
     return {'description': 'Cosmic Tarot Ollama-generated card database', 'cards': build_canonical_deck()}
 
 
+def is_usable_meaning(text):
+    if not isinstance(text, str):
+        return False
+    normalized = ' '.join(text.strip().split())
+    if not normalized:
+        return False
+    lower = normalized.lower().strip('. ')
+    placeholder_phrases = {
+        'sentence one',
+        'sentence two',
+        'first sentence',
+        'second sentence',
+        'upright sentence one',
+        'upright sentence two',
+        'reversed sentence one',
+        'reversed sentence two',
+    }
+    if lower in placeholder_phrases:
+        return False
+    # Reject bare keyword echoes such as ["choice", "balance", "air"].
+    if len(normalized.split()) < 4 and not normalized.endswith(('.', '!', '?')):
+        return False
+    return True
+
+
 def coerce_meaning_list(value):
     if isinstance(value, list):
         meanings = []
         for item in value:
             meanings.extend(coerce_meaning_list(item))
         return meanings[:3]
-    if isinstance(value, str) and value.strip():
-        return [value.strip()]
+    if isinstance(value, str) and is_usable_meaning(value):
+        return [' '.join(value.strip().split())]
     if isinstance(value, dict):
         return coerce_meaning_list(list(value.values()))
     return []
@@ -328,20 +353,19 @@ def parse_ollama_meanings(card, response_text):
     parsed = extract_json_object(response_text)
     upright = find_first_meanings(parsed, ('upright', 'light', 'positive'))
     reversed_meanings = find_first_meanings(parsed, ('reversed', 'reverse', 'inverted', 'shadow', 'challenge', 'challenging'))
-    if not upright and not reversed_meanings:
+    if len(upright) < 2 or len(reversed_meanings) < 2:
         preview = response_text.strip().replace('\n', ' ')[:240]
-        raise ValueError(f'Model response for {card["name"]} did not include recognizable upright and reversed meanings. Response preview: {preview}')
-    fallback_upright, fallback_reversed = fallback_meanings(card)
-    return upright or fallback_upright, reversed_meanings or fallback_reversed
+        raise ValueError(f'Model response for {card["name"]} did not include two usable upright and two usable reversed sentences. Response preview: {preview}')
+    return upright[:2], reversed_meanings[:2]
 
 
 def build_repair_prompt(card, previous_response):
     preview = previous_response.strip().replace('\n', ' ')[:1200]
     return (
-        'The previous answer did not include both required arrays. '
+        'The previous answer did not include two usable sentences in both required arrays. '
         f'For {card["name"]}, respond with one minified JSON object only, using exactly: '
         '{"upright":["sentence one","sentence two"],"reversed":["sentence one","sentence two"]}. '
-        'Keep any useful upright meaning, and add the missing reversed meanings if needed. '
+        'Do not use placeholders or bare keywords. Keep any useful upright meaning, and add the missing reversed meanings if needed. '
         f'Previous answer: {preview}'
     )
 
@@ -353,13 +377,13 @@ def build_prompt(card, retry=False):
             'Respond with a single minified JSON object and no markdown. '
             f'The card is {card["name"]}. Use exactly this shape: '
             '{"upright":["sentence one","sentence two"],"reversed":["sentence one","sentence two"]}. '
-            'Each array must contain exactly 2 short, practical tarot encyclopedia sentences. '
+            'Each array must contain exactly 2 short, practical tarot encyclopedia sentences, not placeholders or bare keywords. '
             f'Keywords: {keywords}.'
         )
     return (
         f'Write concise tarot encyclopedia meanings for {card["name"]}. '
         'Return ONLY JSON with keys upright and reversed. '
-        'Each value must be an array of exactly 2 short, practical sentences. '
+        'Each value must be an array of exactly 2 short, practical sentences, not placeholders or bare keywords. '
         'Avoid markdown, fortune-telling certainty, and references to being an AI. '
         f'Keywords: {keywords}.'
     )
@@ -468,6 +492,8 @@ def main():
         enriched_cards.append(enriched_card)
         write_output(database, enriched_cards + cards[index:])
         print('done' if not warning else f'done ({warning})')
+        print(f'  upright: {upright[0]} / {upright[1]}')
+        print(f'  reversed: {reversed_meanings[0]} / {reversed_meanings[1]}')
         if delay_seconds:
             time.sleep(delay_seconds)
 
