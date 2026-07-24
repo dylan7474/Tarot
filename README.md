@@ -68,13 +68,13 @@ Use the companion generator to ask a local Ollama model for fresh upright and re
 ./create_data.sh
 ```
 
-When `OLLAMA_MODEL` is not set and the script is run in an interactive terminal, it fetches installed models from Ollama, prints a numbered list, and prompts you to pick one. To review the numbered model list without generating data, run:
+Run the script without arguments in an interactive terminal. It fetches installed models from Ollama, prints a numbered list, and prompts you to enter the number for the model that will generate tarot card data. To review the numbered model list without generating data, run:
 
 ```bash
 ./create_data.sh --list-models
 ```
 
-You can still skip the prompt by setting a model explicitly:
+For automation only, you can skip the interactive prompt by setting a model explicitly:
 
 ```bash
 OLLAMA_MODEL=llama3.1 ./create_data.sh
@@ -84,7 +84,6 @@ By default, the generated database is written to `data/assets/tarot-images.json`
 
 ```bash
 OLLAMA_URL=http://localhost:11434 \
-OLLAMA_MODEL=mistral \
 SOURCE_FILE=data/assets/tarot-images.json \
 OUTPUT_FILE=data/assets/tarot-images.json \
 ./create_data.sh
