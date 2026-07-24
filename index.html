@@ -1150,22 +1150,85 @@
             return `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
         }
 
-        function generatedCardMeanings(card) {
-            const keywords = Array.isArray(card.keywords) ? card.keywords.filter(Boolean) : [];
-            const themes = sentenceFromList(keywords.slice(0, 4), card.name || 'this card');
-            const cardLabel = card.name || 'This card';
-            const suitContext = card.suit ? ` within the realm of ${card.suit}` : '';
+        const MAJOR_MEANING_THEMES = {
+          "The Fool": ["a fresh threshold, brave curiosity, and the freedom to begin without knowing every step", "recklessness, scattered trust, or leaping before the spirit has checked the ground"],
+          "The Magician": ["focused will, skillful manifestation, and turning available tools into visible change", "manipulation, unfocused power, or potential that is being delayed by doubt"],
+          "The High Priestess": ["inner knowing, sacred mystery, and the quiet wisdom beneath the surface", "withheld truth, ignored intuition, or confusion created by silence and secrecy"],
+          "The Empress": ["nurture, creativity, abundance, and the body wisdom that helps life flourish", "creative blocks, overgiving, or neglecting the care that sustains growth"],
+          "The Emperor": ["structure, protection, leadership, and the steady authority that creates safety", "control, rigidity, or authority that has hardened into pressure"],
+          "The Hierophant": ["tradition, shared values, mentorship, and learning through trusted spiritual containers", "dogma, conformity, or inherited rules that no longer serve the soul"],
+          "The Lovers": ["choice, union, devotion, and values that align the heart with action", "misalignment, temptation, or choices made from fear rather than truth"],
+          "The Chariot": ["direction, discipline, momentum, and the courage to steer opposing forces", "force without focus, stalled progress, or willpower pulling against itself"],
+          "Strength": ["compassionate courage, patience, and the gentle mastery of instinct", "self-doubt, reactive pride, or trying to dominate what needs kindness"],
+          "The Hermit": ["solitude, reflection, and the lantern of wisdom found within", "isolation, withdrawal, or refusing the guidance that quiet has revealed"],
+          "Wheel of Fortune": ["cycles, turning points, fate, and the changing rhythm of opportunity", "resistance to change, unlucky timing, or repeating a lesson without integration"],
+          "Justice": ["truth, accountability, balance, and choices weighed with clear integrity", "avoidance of consequences, unfairness, or distorted judgment"],
+          "The Hanged Man": ["surrender, new perspective, and wisdom gained by pausing the struggle", "stagnation, martyrdom, or delay that avoids necessary release"],
+          "Death": ["release, transformation, and the sacred ending that makes renewal possible", "clinging to what is over, fear of transition, or delayed rebirth"],
+          "Temperance": ["integration, moderation, healing, and the alchemy of blended opposites", "excess, impatience, or imbalance that disrupts the healing process"],
+          "The Devil": ["bondage revealed, desire made conscious, and the power to name attachments", "compulsion, shame, or patterns that keep energy chained"],
+          "The Tower": ["sudden truth, liberation, and the collapse of structures built on illusion", "fear of upheaval, denial, or resisting a necessary breakthrough"],
+          "The Star": ["hope, renewal, spiritual guidance, and the tender return of faith", "discouragement, depletion, or losing sight of the light ahead"],
+          "The Moon": ["dreams, uncertainty, intuition, and the symbolic language of the unconscious", "illusion, anxiety, or wandering too long in shadows without grounding"],
+          "The Sun": ["joy, vitality, clarity, and the life-giving warmth of honest expression", "temporary gloom, overexposure, or joy dimmed by self-consciousness"],
+          "Judgement": ["awakening, reckoning, and the call to rise into a truer life", "self-judgment, avoidance of the call, or fear of being fully seen"],
+          "The World": ["completion, integration, belonging, and the wholeness earned through the journey", "unfinished closure, limited vision, or difficulty receiving accomplishment"]
+        };
 
-            return {
-                light: [
-                    `${cardLabel} invites ${themes}${suitContext}, showing where this energy can nourish growth, clarity, and aligned action.`,
-                    `In its upright light, this card asks you to trust the constructive expression of ${themes} and let it guide the next step.`
-                ],
-                shadow: [
-                    `${cardLabel} reversed points to blocked or overextended ${themes}${suitContext}, revealing what needs care, boundaries, or release.`,
-                    `In shadow, this card asks you to notice where ${themes} may be distorted by fear, delay, avoidance, or imbalance.`
-                ]
-            };
+        const SUIT_MEANING_THEMES = {
+          Wands: "creative fire, desire, courage, and inspired action",
+          Cups: "emotion, intuition, relationships, and the waters of the heart",
+          Swords: "thought, truth, conflict, and the clarifying power of the mind",
+          Pentacles: "body, resources, work, and the practical magic of the material world"
+        };
+
+        const RANK_MEANING_THEMES = {
+          Ace: ["a seed of new potential beginning to glow", "a gift of potential that is blocked, delayed, or doubted"],
+          Two: ["choice, partnership, and the first dance between opposing needs", "indecision, imbalance, or a partnership out of rhythm"],
+          Three: ["growth, collaboration, and energy taking visible form", "scattered effort, weak support, or growth that needs realignment"],
+          Four: ["stability, pause, and the container that lets energy settle", "stagnation, restlessness, or a structure that has become too small"],
+          Five: ["challenge, disruption, and the friction that reveals what must change", "avoidance of conflict, lingering tension, or lessons repeated through struggle"],
+          Six: ["movement toward harmony, repair, and the grace of perspective", "difficulty receiving peace, nostalgia, or an uneven exchange"],
+          Seven: ["assessment, courage, and the need to choose with discernment", "self-doubt, confusion, or defending a path that needs review"],
+          Eight: ["momentum, mastery, and focused movement through a threshold", "delay, overwhelm, or energy moving without conscious direction"],
+          Nine: ["ripening, resilience, and the near-completion of a cycle", "exhaustion, guardedness, or fulfillment that feels just out of reach"],
+          Ten: ["culmination, responsibility, and the full weight or harvest of the suit", "overload, release resisted, or completion that requires a new boundary"],
+          Page: ["curiosity, study, and a messenger bringing the suit in youthful form", "immaturity, distraction, or a lesson not yet embodied"],
+          Knight: ["movement, pursuit, and the suit expressed as questing momentum", "haste, inconsistency, or a quest driven by reaction"],
+          Queen: ["receptive mastery, inner authority, and the suit held with mature care", "insecurity, emotional depletion, or wisdom withheld from itself"],
+          King: ["outward mastery, stewardship, and the suit expressed through responsible leadership", "domination, rigidity, or authority disconnected from wisdom"]
+        };
+
+        function cardMeaningThemes(card) {
+          const cardName = card.name || 'This card';
+          if (MAJOR_MEANING_THEMES[cardName]) return MAJOR_MEANING_THEMES[cardName];
+
+          const rank = Object.keys(RANK_MEANING_THEMES).find(value => cardName.startsWith(`${value} of `));
+          const suit = card.suit || Object.keys(SUIT_MEANING_THEMES).find(value => cardName.endsWith(`of ${value}`));
+          const fallbackTheme = sentenceFromList(card.keywords, cardName);
+          const suitTheme = SUIT_MEANING_THEMES[suit] || fallbackTheme;
+          const rankThemes = RANK_MEANING_THEMES[rank] || [fallbackTheme, `blocked or overextended ${fallbackTheme}`];
+
+          return [
+            `${rankThemes[0]} within ${suitTheme}`,
+            `${rankThemes[1]} within ${suitTheme}`
+          ];
+        }
+
+        function generatedCardMeanings(card) {
+          const cardLabel = card.name || 'This card';
+          const [lightTheme, shadowTheme] = cardMeaningThemes(card);
+
+          return {
+            light: [
+              `${cardLabel} reveals ${lightTheme}.`,
+              `Upright, it encourages you to work with this energy consciously and let its lesson shape the next step.`
+            ],
+            shadow: [
+              `${cardLabel} reversed reveals ${shadowTheme}.`,
+              `In shadow, it asks for honest attention to where this pattern is blocked, exaggerated, or ready to be released.`
+            ]
+          };
         }
 
         function normalizeMeaningList(value) {
