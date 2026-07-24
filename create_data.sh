@@ -242,27 +242,105 @@ def load_source_deck():
 
 def coerce_meaning_list(value):
     if isinstance(value, list):
-        return [str(item).strip() for item in value if str(item).strip()][:3]
+        meanings = []
+        for item in value:
+            meanings.extend(coerce_meaning_list(item))
+        return meanings[:3]
     if isinstance(value, str) and value.strip():
         return [value.strip()]
+    if isinstance(value, dict):
+        return coerce_meaning_list(list(value.values()))
     return []
 
 
-def ask_ollama(card):
+def extract_json_object(response_text):
+    text = response_text.strip()
+    if not text:
+        raise ValueError('Model returned an empty response.')
+
+    json_candidates = [text]
+    fence_start = text.find('```')
+    if fence_start != -1:
+        fence_body = text[fence_start + 3:]
+        newline_index = fence_body.find('\n')
+        if newline_index != -1:
+            fence_body = fence_body[newline_index + 1:]
+        fence_end = fence_body.find('```')
+        if fence_end != -1:
+            json_candidates.append(fence_body[:fence_end].strip())
+
+    object_start = text.find('{')
+    object_end = text.rfind('}')
+    if object_start != -1 and object_end != -1 and object_end > object_start:
+        json_candidates.append(text[object_start:object_end + 1])
+
+    last_error = None
+    for candidate in json_candidates:
+        if not candidate:
+            continue
+        try:
+            parsed = json.loads(candidate)
+        except json.JSONDecodeError as error:
+            last_error = error
+            continue
+        if isinstance(parsed, dict):
+            return parsed
+        raise ValueError('Model JSON response was not an object.')
+
+    raise ValueError(f'Model response was not valid JSON: {last_error}')
+
+
+def find_first_meanings(parsed, key_candidates):
+    for key in key_candidates:
+        if key in parsed:
+            meanings = coerce_meaning_list(parsed.get(key))
+            if meanings:
+                return meanings
+
+    for nested in parsed.values():
+        if isinstance(nested, dict):
+            meanings = find_first_meanings(nested, key_candidates)
+            if meanings:
+                return meanings
+    return []
+
+
+def parse_ollama_meanings(card, response_text):
+    parsed = extract_json_object(response_text)
+    upright = find_first_meanings(parsed, ('upright', 'light', 'positive'))
+    reversed_meanings = find_first_meanings(parsed, ('reversed', 'reverse', 'inverted', 'shadow', 'challenge', 'challenging'))
+    if not upright or not reversed_meanings:
+        preview = response_text.strip().replace('\n', ' ')[:240]
+        raise ValueError(f'Model response for {card["name"]} did not include recognizable upright and reversed meanings. Response preview: {preview}')
+    return upright, reversed_meanings
+
+
+def build_prompt(card, retry=False):
     keywords = ', '.join(card.get('keywords') or [])
-    prompt = (
+    if retry:
+        return (
+            'Respond with a single minified JSON object and no markdown. '
+            f'The card is {card["name"]}. Use exactly this shape: '
+            '{"upright":["sentence one","sentence two"],"reversed":["sentence one","sentence two"]}. '
+            'Each array must contain exactly 2 short, practical tarot encyclopedia sentences. '
+            f'Keywords: {keywords}.'
+        )
+    return (
         f'Write concise tarot encyclopedia meanings for {card["name"]}. '
         'Return ONLY JSON with keys upright and reversed. '
         'Each value must be an array of exactly 2 short, practical sentences. '
         'Avoid markdown, fortune-telling certainty, and references to being an AI. '
         f'Keywords: {keywords}.'
     )
+
+
+def request_ollama(prompt, temperature):
     request_body = json.dumps({
         'model': model,
         'prompt': prompt,
         'stream': False,
         'format': 'json',
-        'options': {'temperature': 0.7},
+        'options': {'temperature': temperature},
     }).encode('utf-8')
     request = urllib.request.Request(
         f'{ollama_url}/api/generate',
@@ -275,12 +353,19 @@ def ask_ollama(card):
             payload = json.loads(response.read().decode('utf-8'))
     except urllib.error.HTTPError as error:
         raise RuntimeError(f'Ollama returned {error.code} {error.reason}') from error
-    parsed = json.loads(str(payload.get('response', '')).strip())
-    upright = coerce_meaning_list(parsed.get('upright'))
-    reversed_meanings = coerce_meaning_list(parsed.get('reversed') or parsed.get('inverted'))
-    if not upright or not reversed_meanings:
-        raise ValueError(f'Model response for {card["name"]} did not include upright and reversed arrays.')
-    return upright, reversed_meanings
+    return str(payload.get('response', '')).strip()
+
+
+def ask_ollama(card):
+    attempts = ((False, 0.7), (True, 0.2))
+    last_error = None
+    for retry, temperature in attempts:
+        response_text = request_ollama(build_prompt(card, retry=retry), temperature)
+        try:
+            return parse_ollama_meanings(card, response_text)
+        except ValueError as error:
+            last_error = error
+    raise last_error
 
 
 def main():
