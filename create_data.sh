@@ -19,7 +19,7 @@ Create an Ollama-enriched tarot card database for Cosmic Tarot.
 
 Environment variables:
   OLLAMA_URL              Ollama base URL. Default: http://localhost:11434
-  OLLAMA_MODEL            Local model name. If unset in an interactive terminal, choose from installed models.
+  OLLAMA_MODEL            Optional automation override. Default interactive runs ask you to choose from installed models.
   OUTPUT_FILE             Compatible JSON database to write. Default: data/assets/tarot-images.json
   SOURCE_FILE             Optional existing tarot-images.json to preserve images/metadata.
   REQUEST_DELAY_SECONDS   Optional pause between cards. Default: 0
@@ -31,8 +31,8 @@ Options:
 
 Example:
   ./create_data.sh
-  OLLAMA_MODEL=mistral ./create_data.sh
-  OLLAMA_URL=http://ollama.lan:11434 OLLAMA_MODEL=llama3.1 OUTPUT_FILE=data/generated/tarot-images.json ./create_data.sh
+  OLLAMA_URL=http://ollama.lan:11434 OUTPUT_FILE=data/generated/tarot-images.json ./create_data.sh
+  OLLAMA_MODEL=llama3.1 ./create_data.sh  # automation override
 USAGE
 }
 
@@ -52,6 +52,7 @@ done
 
 command -v python3 >/dev/null 2>&1 || { echo "Python 3 is required to run this generator." >&2; exit 1; }
 
+exec 3<&0
 export OLLAMA_URL OLLAMA_MODEL OLLAMA_MODEL_WAS_SET OUTPUT_FILE SOURCE_FILE REQUEST_DELAY_SECONDS LIST_CARDS_ONLY LIST_MODELS_ONLY
 
 python3 <<'PYTHON'
@@ -143,49 +144,40 @@ def fetch_ollama_models():
     return sorted(names, key=str.lower)
 
 
-def print_numbered_models(models):
+def print_numbered_models(models, output=sys.stdout):
     if not models:
-        print(f'No installed Ollama models were reported by {ollama_url}.')
+        print(f'No installed Ollama models were reported by {ollama_url}.', file=output)
         return
-    print(f'Installed Ollama models at {ollama_url}:')
+    print(f'Installed Ollama models at {ollama_url}:', file=output)
     for index, model_name in enumerate(models, start=1):
-        print(f'{index:02d}. {model_name}')
-
-
-def open_prompt_terminal():
-    try:
-        return open('/dev/tty', 'r+', encoding='utf-8')
-    except OSError:
-        return None
+        print(f'{index:02d}. {model_name}', file=output)
 
 
 def select_ollama_model():
     global model
     if model:
+        print(f'Using Ollama model from OLLAMA_MODEL: {model}')
         return
 
     models = fetch_ollama_models()
     if not models:
-        raise RuntimeError(f'No Ollama models are installed at {ollama_url}. Run `ollama pull llama3.1` or set OLLAMA_MODEL to a remote model name.')
+        raise RuntimeError(f'No Ollama models are installed at {ollama_url}. Run `ollama pull llama3.1` or set OLLAMA_MODEL for automation.')
 
-    terminal = open_prompt_terminal()
-    if terminal is None:
-        model = models[0]
-        print(f'OLLAMA_MODEL was not set and no interactive terminal is available; using installed model: {model}')
-        return
-
-    with terminal:
-        print_numbered_models(models)
-        while True:
-            print(f'Select a model [1-{len(models)}]: ', end='', flush=True, file=terminal)
-            choice = terminal.readline().strip()
-            if choice.isdigit():
-                index = int(choice)
-                if 1 <= index <= len(models):
-                    model = models[index - 1]
-                    print(f'Using Ollama model: {model}')
-                    return
-            print('Please enter one of the numbered model choices.', file=terminal)
+    print_numbered_models(models)
+    prompt_input = os.fdopen(3, 'r', closefd=False)
+    while True:
+        print(f'Select the model to generate tarot card data [1-{len(models)}]: ', end='', flush=True)
+        choice = prompt_input.readline()
+        if choice == '':
+            raise RuntimeError('No model selection was entered. Run ./create_data.sh in a terminal and select a numbered model, or set OLLAMA_MODEL for automation.')
+        choice = choice.strip()
+        if choice.isdigit():
+            index = int(choice)
+            if 1 <= index <= len(models):
+                model = models[index - 1]
+                print(f'Using Ollama model: {model}')
+                return
+        print('Please enter one of the numbered model choices.')
 
 
 def verify_selected_model():
