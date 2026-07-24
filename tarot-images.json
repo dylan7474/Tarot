@@ -1,0 +1,2282 @@
+{
+  "description": "Cosmic Tarot Ollama-generated card database",
+  "cards": [
+    {
+      "name": "The Fool",
+      "name_short": "m00",
+      "value": "Fool",
+      "value_int": 0,
+      "suit": "major",
+      "type": "major",
+      "img": "m00.jpg",
+      "keywords": [
+        "beginnings",
+        "trust",
+        "adventure",
+        "innocence"
+      ],
+      "meanings": {
+        "light": [
+          "A leap of faith into the unknown journey.",
+          "Embrace spontaneity with trusting a new direction."
+        ],
+        "shadow": [
+          "Reckless action without careful planning or true risk-taking.",
+          "A naive start where innocence leads to potential recklessness."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:15:59Z"
+      }
+    },
+    {
+      "name": "The Magician",
+      "name_short": "m01",
+      "value": "Magician",
+      "value_int": 1,
+      "suit": "major",
+      "type": "major",
+      "img": "m01.jpg",
+      "keywords": [
+        "will",
+        "skill",
+        "manifestation",
+        "focus"
+      ],
+      "meanings": {
+        "light": [
+          "The Magician represents the mastery of skills and a clear ability to manifest desired outcomes.",
+          "It signifies powerful communication and the focused application of intellect for practical results."
+        ],
+        "shadow": [
+          "This card indicates potential manipulation or an untapped energy that needs directed into tangible action.",
+          "Suggests skill in strategy, but also a lack of focus leading to missed opportunities."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:16:13Z"
+      }
+    },
+    {
+      "name": "The High Priestess",
+      "name_short": "m02",
+      "value": "High Priestess",
+      "value_int": 2,
+      "suit": "major",
+      "type": "major",
+      "img": "m02.jpg",
+      "keywords": [
+        "intuition",
+        "mystery",
+        "inner knowing",
+        "dreams"
+      ],
+      "meanings": {
+        "light": [
+          "The High Priestess signifies a deep intuitive understanding of hidden truths.",
+          "It represents the quiet power derived from inner knowing and mystical insights."
+        ],
+        "shadow": [
+          "This card suggests veiled secrets or suppressed knowledge needs attention.",
+          "It indicates that intuition is clouded by mystery, requiring careful introspection."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:16:26Z"
+      }
+    },
+    {
+      "name": "The Empress",
+      "name_short": "m03",
+      "value": "Empress",
+      "value_int": 3,
+      "suit": "major",
+      "type": "major",
+      "img": "m03.jpg",
+      "keywords": [
+        "nurturing",
+        "abundance",
+        "creativity",
+        "embodiment"
+      ],
+      "meanings": {
+        "light": [
+          "Embodiment is a fertile state of creative potential.",
+          "A manifestation of deep emotional richness and fertility."
+        ],
+        "shadow": [
+          "Lack of self-nurturing or untapped maternal energy.",
+          "The stagnation of abundant resources due to lack of proper nurturing."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:16:38Z"
+      }
+    },
+    {
+      "name": "The Emperor",
+      "name_short": "m04",
+      "value": "Emperor",
+      "value_int": 4,
+      "suit": "major",
+      "type": "major",
+      "img": "m04.jpg",
+      "keywords": [
+        "structure",
+        "authority",
+        "stability",
+        "leadership"
+      ],
+      "meanings": {
+        "light": [
+          "A strong desire for control over one's life and decisions.",
+          "Represents a powerful figure who establishes order."
+        ],
+        "shadow": [
+          "Indicates a lack of structure or rigid rules in the current situation.",
+          "Suggests potential tyranny or inflexibility in leadership."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:16:51Z"
+      }
+    },
+    {
+      "name": "The Hierophant",
+      "name_short": "m05",
+      "value": "Hierophant",
+      "value_int": 5,
+      "suit": "major",
+      "type": "major",
+      "img": "m05.jpg",
+      "keywords": [
+        "tradition",
+        "teaching",
+        "ritual",
+        "belief"
+      ],
+      "meanings": {
+        "light": [
+          "The Hierophant represents established wisdom and accepted dogma.",
+          "It signifies a commitment to traditional beliefs and established structures."
+        ],
+        "shadow": [
+          "This card suggests unconventional or unorthodox teachings are necessary.",
+          "It indicates a challenge to conventional ways of thinking and inherited truths."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:17:04Z"
+      }
+    },
+    {
+      "name": "The Lovers",
+      "name_short": "m06",
+      "value": "Lovers",
+      "value_int": 6,
+      "suit": "major",
+      "type": "major",
+      "img": "m06.jpg",
+      "keywords": [
+        "choice",
+        "union",
+        "values",
+        "harmony"
+      ],
+      "meanings": {
+        "light": [
+          "The Lovers invites choice and clear engagement with the moment.",
+          "It encourages practical trust in union as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, The Lovers can point to blocked choice or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance union."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:17:38Z",
+        "warning": "using built-in fallback after invalid model response: Model response for The Lovers did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"The Lovers is a card of choice and deep connection.\"], \"reversed\":[\"Reversed The Lovers suggests challenges in relationships where the core values might be overlooked.\"]}"
+      }
+    },
+    {
+      "name": "The Chariot",
+      "name_short": "m07",
+      "value": "Chariot",
+      "value_int": 7,
+      "suit": "major",
+      "type": "major",
+      "img": "m07.jpg",
+      "keywords": [
+        "direction",
+        "discipline",
+        "victory",
+        "momentum"
+      ],
+      "meanings": {
+        "light": [
+          "The Chariot signifies a powerful drive toward clear goals.",
+          "It indicates disciplined control over ambition and success."
+        ],
+        "shadow": [
+          "This card suggests a lack of focus or misdirected energy in the path forward.",
+          "It points to internal conflict regarding direction and necessary discipline."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:17:52Z"
+      }
+    },
+    {
+      "name": "Strength",
+      "name_short": "m08",
+      "value": "Strength",
+      "value_int": 8,
+      "suit": "major",
+      "type": "major",
+      "img": "m08.jpg",
+      "keywords": [
+        "courage",
+        "patience",
+        "compassion",
+        "inner power"
+      ],
+      "meanings": {
+        "light": [
+          "Strength signifies harnessing internal fortitude for a difficult task.",
+          "It indicates the gentle yet powerful application of self-control."
+        ],
+        "shadow": [
+          "The card suggests that true strength lies in patient endurance rather than brute force.",
+          "A reflection on how one uses their compassion and courage to overcome obstacles."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:18:06Z"
+      }
+    },
+    {
+      "name": "The Hermit",
+      "name_short": "m09",
+      "value": "Hermit",
+      "value_int": 9,
+      "suit": "major",
+      "type": "major",
+      "img": "m09.jpg",
+      "keywords": [
+        "solitude",
+        "wisdom",
+        "reflection",
+        "guidance"
+      ],
+      "meanings": {
+        "light": [
+          "A quest for inner truth and deep understanding.",
+          "Seeking clarity through introspection."
+        ],
+        "shadow": [
+          "A period of necessary withdrawal and self-discovery.",
+          "Guidance offered through quiet contemplation."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:18:17Z"
+      }
+    },
+    {
+      "name": "Wheel of Fortune",
+      "name_short": "m10",
+      "value": "Wheel of Fortune",
+      "value_int": 10,
+      "suit": "major",
+      "type": "major",
+      "img": "m10.jpg",
+      "keywords": [
+        "cycles",
+        "change",
+        "luck",
+        "timing"
+      ],
+      "meanings": {
+        "light": [
+          "The wheel signifies a turning point in your life.",
+          "It indicates that favorable changes are coming soon."
+        ],
+        "shadow": [
+          "This suggests the current cycle is ending.",
+          "A period of good fortune or significant shifts is imminent."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:18:29Z"
+      }
+    },
+    {
+      "name": "Justice",
+      "name_short": "m11",
+      "value": "Justice",
+      "value_int": 11,
+      "suit": "major",
+      "type": "major",
+      "img": "m11.jpg",
+      "keywords": [
+        "truth",
+        "balance",
+        "accountability",
+        "fairness"
+      ],
+      "meanings": {
+        "light": [
+          "The card signifies a need for objective truth and clear discernment.",
+          "It represents the establishment of proper balance through fair legal or ethical action."
+        ],
+        "shadow": [
+          "This indicates a temporary imbalance where true justice is lacking.",
+          "It suggests an area requiring accountability to restore equilibrium in life."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:18:42Z"
+      }
+    },
+    {
+      "name": "The Hanged Man",
+      "name_short": "m12",
+      "value": "Hanged Man",
+      "value_int": 12,
+      "suit": "major",
+      "type": "major",
+      "img": "m12.jpg",
+      "keywords": [
+        "surrender",
+        "perspective",
+        "pause",
+        "release"
+      ],
+      "meanings": {
+        "light": [
+          "A period of necessary suspension in life's course.",
+          "Embrace the stillness required for true insight."
+        ],
+        "shadow": [
+          "A forced sacrifice leading to a deeper understanding.",
+          "The realization that comes through complete surrender."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:18:54Z"
+      }
+    },
+    {
+      "name": "Death",
+      "name_short": "m13",
+      "value": "Death",
+      "value_int": 13,
+      "suit": "major",
+      "type": "major",
+      "img": "m13.jpg",
+      "keywords": [
+        "ending",
+        "transition",
+        "renewal",
+        "transformation"
+      ],
+      "meanings": {
+        "light": [
+          "signifies a powerful transition into a new phase.",
+          "represents the end of an old cycle leading to growth."
+        ],
+        "shadow": [
+          "indicates a necessary shedding of the past.",
+          "suggests complete transformation and profound change."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:19:06Z"
+      }
+    },
+    {
+      "name": "Temperance",
+      "name_short": "m14",
+      "value": "Temperance",
+      "value_int": 14,
+      "suit": "major",
+      "type": "major",
+      "img": "m14.jpg",
+      "keywords": [
+        "integration",
+        "moderation",
+        "healing",
+        "alchemy"
+      ],
+      "meanings": {
+        "light": [
+          "Temperance represents the balance between opposing forces.",
+          "It signifies a harmonious blending of different energies for growth."
+        ],
+        "shadow": [
+          "This card suggests imbalance or inconsistency in temperament.",
+          "Integration is necessary for true healing and transformative alchemy."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:19:18Z"
+      }
+    },
+    {
+      "name": "The Devil",
+      "name_short": "m15",
+      "value": "Devil",
+      "value_int": 15,
+      "suit": "major",
+      "type": "major",
+      "img": "m15.jpg",
+      "keywords": [
+        "attachment",
+        "shadow",
+        "desire",
+        "restriction"
+      ],
+      "meanings": {
+        "light": [
+          "The Devil represents a powerful temptation or intoxicating allure.",
+          "It signifies the seductive nature of material desires and worldly attachments."
+        ],
+        "shadow": [
+          "This card highlights hidden shadows or suppressed desires that dictate reality.",
+          "It points to bondage caused by excessive attachment or restrictive desires."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:19:30Z"
+      }
+    },
+    {
+      "name": "The Tower",
+      "name_short": "m16",
+      "value": "Tower",
+      "value_int": 16,
+      "suit": "major",
+      "type": "major",
+      "img": "m16.jpg",
+      "keywords": [
+        "upheaval",
+        "revelation",
+        "liberation",
+        "truth"
+      ],
+      "meanings": {
+        "light": [
+          "The Tower signifies a sudden breakthrough of clarity.",
+          "It represents the dramatic unveiling of hidden truths."
+        ],
+        "shadow": [
+          "This card indicates necessary upheaval for growth.",
+          "It points toward a painful but liberating realization."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:19:41Z"
+      }
+    },
+    {
+      "name": "The Star",
+      "name_short": "m17",
+      "value": "Star",
+      "value_int": 17,
+      "suit": "major",
+      "type": "major",
+      "img": "m17.jpg",
+      "keywords": [
+        "hope",
+        "renewal",
+        "inspiration",
+        "faith"
+      ],
+      "meanings": {
+        "light": [
+          "The Star represents a period of deep spiritual insight and clarity.",
+          "It signifies a necessary belief in the future's potential."
+        ],
+        "shadow": [
+          "This card indicates a lack of true hope or profound faith in one's vision.",
+          "A challenge to trust intuition; doubt regarding inspiration."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:19:54Z"
+      }
+    },
+    {
+      "name": "The Moon",
+      "name_short": "m18",
+      "value": "Moon",
+      "value_int": 18,
+      "suit": "major",
+      "type": "major",
+      "img": "m18.jpg",
+      "keywords": [
+        "uncertainty",
+        "dreams",
+        "illusion",
+        "instinct"
+      ],
+      "meanings": {
+        "light": [
+          "The Moon invites uncertainty and clear engagement with the moment.",
+          "It encourages practical trust in dreams as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, The Moon can point to blocked uncertainty or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance dreams."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:20:31Z",
+        "warning": "using built-in fallback after invalid model response: Model response for The Moon did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"The Moon is a card of the subconscious and hidden truths.\"],\"reversed\":[\"The Moon represents deep psychological insight and veiled realities.\"] }"
+      }
+    },
+    {
+      "name": "The Sun",
+      "name_short": "m19",
+      "value": "Sun",
+      "value_int": 19,
+      "suit": "major",
+      "type": "major",
+      "img": "m19.jpg",
+      "keywords": [
+        "joy",
+        "clarity",
+        "vitality",
+        "success"
+      ],
+      "meanings": {
+        "light": [
+          "Joy is a dominant force in the reading.",
+          "Clarity of vision brings true insight."
+        ],
+        "shadow": [
+          "Vitality shows up through clear energy.",
+          "Success comes from joyful self-assurance."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:20:45Z"
+      }
+    },
+    {
+      "name": "Judgement",
+      "name_short": "m20",
+      "value": "Judgement",
+      "value_int": 20,
+      "suit": "major",
+      "type": "major",
+      "img": "m20.jpg",
+      "keywords": [
+        "awakening",
+        "calling",
+        "reckoning",
+        "rebirth"
+      ],
+      "meanings": {
+        "light": [
+          "A spiritual awakening signifies a profound realization of one's true self.",
+          "It is the moment where deep truths are accepted and integrated into consciousness."
+        ],
+        "shadow": [
+          "The inner voice calls for a necessary change in perspective or direction.",
+          "This reading points to an urgent reckoning, leading to personal rebirth."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:21:09Z"
+      }
+    },
+    {
+      "name": "The World",
+      "name_short": "m21",
+      "value": "World",
+      "value_int": 21,
+      "suit": "major",
+      "type": "major",
+      "img": "m21.jpg",
+      "keywords": [
+        "completion",
+        "integration",
+        "achievement",
+        "wholeness"
+      ],
+      "meanings": {
+        "light": [
+          "A signifies a complete cycle or successful conclusion.",
+          "It represents the culmination of effort leading to total success."
+        ],
+        "shadow": [
+          "Indicates a need for holistic integration or acceptance of finality.",
+          "Suggests that true completion requires accepting endings and integrating lessons learned."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:21:27Z"
+      }
+    },
+    {
+      "name": "Ace of Wands",
+      "name_short": "wace",
+      "value": "Ace",
+      "value_int": 1,
+      "suit": "wands",
+      "type": "minor",
+      "img": "wace.jpg",
+      "keywords": [
+        "seed",
+        "potential",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "The Ace of Wands signifies a fresh burst of creative energy and the potential for new beginnings.",
+          "It represents a powerful spark of inspiration or a strong drive to initiate action with passion."
+        ],
+        "shadow": [
+          "This card suggests a blockage in creativity or a lack of initial momentum, indicating stalled artistic endeavors.",
+          "The reversed Ace of Wands points toward untapped potential that is currently overlooked; it signifies a seed waiting for proper activation."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:21:48Z"
+      }
+    },
+    {
+      "name": "Two of Wands",
+      "name_short": "w02",
+      "value": "Two",
+      "value_int": 2,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w02.jpg",
+      "keywords": [
+        "choice",
+        "balance",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "A decision point awaits clarity.",
+          "Focus on the immediate goal."
+        ],
+        "shadow": [
+          "Hesitation in a crucial moment.",
+          "Balance through strategic action."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:22:01Z"
+      }
+    },
+    {
+      "name": "Three of Wands",
+      "name_short": "w03",
+      "value": "Three",
+      "value_int": 3,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w03.jpg",
+      "keywords": [
+        "growth",
+        "collaboration",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "A guiding vision for new projects.",
+          "Confidence in strategic execution."
+        ],
+        "shadow": [
+          "Hesitation regarding a major goal.",
+          "Creative blockage or scattered energy."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:22:18Z"
+      }
+    },
+    {
+      "name": "Four of Wands",
+      "name_short": "w04",
+      "value": "Four",
+      "value_int": 4,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w04.jpg",
+      "keywords": [
+        "foundation",
+        "stability",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "Four of Wands invites foundation and clear engagement with the moment.",
+          "It encourages practical trust in stability as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, Four of Wands can point to blocked foundation or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance stability."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:23:19Z",
+        "warning": "using built-in fallback after invalid model response: Model response for Four of Wands did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"The Four of Wands signifies a solid foundation and the beginning of creative endeavors.\"],\"reversed\":[\"Reversed, it suggests instability in the initial phase, indicating that foundational work might be lacking or requiring re-e"
+      }
+    },
+    {
+      "name": "Five of Wands",
+      "name_short": "w05",
+      "value": "Five",
+      "value_int": 5,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w05.jpg",
+      "keywords": [
+        "challenge",
+        "disruption",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "The five of wands signifies a test of energy and willpower; it indicates facing a situation that requires assertiveness and overcoming initial resistance.",
+          "This card suggests a need for creative action or a burst of original thought to solve a problem."
+        ],
+        "shadow": [
+          "It points to an internal conflict where the will is challenged by external forces, indicating difficulty in asserting oneself.",
+          "The reversed meaning signals a disruption in creativity; it shows that established ideas face challenges and may require innovative solutions."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:23:44Z"
+      }
+    },
+    {
+      "name": "Six of Wands",
+      "name_short": "w06",
+      "value": "Six",
+      "value_int": 6,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w06.jpg",
+      "keywords": [
+        "harmony",
+        "exchange",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "Achieve recognition for talent and skill.",
+          "Celebrate success through collaborative effort."
+        ],
+        "shadow": [
+          "Harmony is challenged by ego; seek balanced relationships.",
+          "Creativity stifled in a competitive environment."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:23:59Z"
+      }
+    },
+    {
+      "name": "Seven of Wands",
+      "name_short": "w07",
+      "value": "Seven",
+      "value_int": 7,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w07.jpg",
+      "keywords": [
+        "assessment",
+        "perseverance",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "Assessment is key to understanding the situation,",
+          "Perseverance ensures success through consistent effort."
+        ],
+        "shadow": [
+          "Creativity shines when facing challenges,",
+          "Fire represents passion and vital energy in action."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:24:47Z"
+      }
+    },
+    {
+      "name": "Eight of Wands",
+      "name_short": "w08",
+      "value": "Eight",
+      "value_int": 8,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w08.jpg",
+      "keywords": [
+        "movement",
+        "mastery",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "The energy suggests a significant step forward in your life's direction.",
+          "A clear indication of the necessary action required to progress."
+        ],
+        "shadow": [
+          "Indicates potential stagnation or unexpected shifts in plans.",
+          "Suggests temporary delay; focus on internal mastery and creative breakthroughs."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:25:04Z"
+      }
+    },
+    {
+      "name": "Nine of Wands",
+      "name_short": "w09",
+      "value": "Nine",
+      "value_int": 9,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w09.jpg",
+      "keywords": [
+        "culmination",
+        "resilience",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "A point where effort culminates in victory.",
+          "Demonstrates steadfast resolve after a period of testing."
+        ],
+        "shadow": [
+          "Lack of conviction or resistance to necessary action.",
+          "The realization that true strength requires creative ingenuity."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:25:17Z"
+      }
+    },
+    {
+      "name": "Ten of Wands",
+      "name_short": "w10",
+      "value": "Ten",
+      "value_int": 10,
+      "suit": "wands",
+      "type": "minor",
+      "img": "w10.jpg",
+      "keywords": [
+        "completion",
+        "burden",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "completion is the goal of this card",
+          "the task requires focused effort to achieve a desired outcome."
+        ],
+        "shadow": [
+          "burden feels heavy and overwhelming",
+          "creativity can be stifled by excessive responsibility."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:25:44Z"
+      }
+    },
+    {
+      "name": "Page of Wands",
+      "name_short": "wpage",
+      "value": "Page",
+      "value_int": 11,
+      "suit": "wands",
+      "type": "minor",
+      "img": "wpage.jpg",
+      "keywords": [
+        "study",
+        "message",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "Wands represent passion and energy.",
+          "A strong drive for creative projects."
+        ],
+        "shadow": [
+          "The energy is scattered and restless.",
+          "Creativity suffers or the project stalls."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:25:55Z"
+      }
+    },
+    {
+      "name": "Knight of Wands",
+      "name_short": "wknight",
+      "value": "Knight",
+      "value_int": 12,
+      "suit": "wands",
+      "type": "minor",
+      "img": "wknight.jpg",
+      "keywords": [
+        "pursuit",
+        "action",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "The Knight of Wands signifies a passionate pursuit of goals with energetic drive.",
+          "It represents the creative spark ignited by ambition and adventurous spirit."
+        ],
+        "shadow": [
+          "This card suggests impatience in pursuing desired outcomes or a lack of focus on initial ventures.",
+          "It indicates an action-oriented approach that needs refinement, emphasizing creativity over impulsive action."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:26:10Z"
+      }
+    },
+    {
+      "name": "Queen of Wands",
+      "name_short": "wqueen",
+      "value": "Queen",
+      "value_int": 13,
+      "suit": "wands",
+      "type": "minor",
+      "img": "wqueen.jpg",
+      "keywords": [
+        "maturity",
+        "care",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "A confident leader with passion for projects.",
+          "Embraces creative energy and artistic vision."
+        ],
+        "shadow": [
+          "Lack of confidence in leadership roles.",
+          "Creative burnout or a need for nurturing self-expression."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:26:24Z"
+      }
+    },
+    {
+      "name": "King of Wands",
+      "name_short": "wking",
+      "value": "King",
+      "value_int": 14,
+      "suit": "wands",
+      "type": "minor",
+      "img": "wking.jpg",
+      "keywords": [
+        "mastery",
+        "leadership",
+        "fire",
+        "creativity"
+      ],
+      "meanings": {
+        "light": [
+          "A powerful leader takes initiative with creative energy.",
+          "The individual embodies a confident master of their domain."
+        ],
+        "shadow": [
+          "Leadership is unstable or overly aggressive in execution.",
+          "Creative power loses direction; potential for scattered ambitions."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:26:37Z"
+      }
+    },
+    {
+      "name": "Ace of Cups",
+      "name_short": "cace",
+      "value": "Ace",
+      "value_int": 1,
+      "suit": "cups",
+      "type": "minor",
+      "img": "cace.jpg",
+      "keywords": [
+        "seed",
+        "potential",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A new emotional beginning is heralded.",
+          "The card signifies a deep emotional fulfillment or spiritual awakening."
+        ],
+        "shadow": [
+          "Emotional stagnation or unexpressed feeling.",
+          "Represents the inner reservoir of love and pure, nurturing energy."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:26:53Z"
+      }
+    },
+    {
+      "name": "Two of Cups",
+      "name_short": "c02",
+      "value": "Two",
+      "value_int": 2,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c02.jpg",
+      "keywords": [
+        "choice",
+        "balance",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A harmonious union signifies a deep emotional connection and mutual understanding.",
+          "Represents the ideal of partnership and shared joy in relationships."
+        ],
+        "shadow": [
+          "Indicates imbalance or potential conflict within an established relationship structure.",
+          "Suggests a misalignment in desires, leading to emotional disconnect or decision paralysis."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:27:10Z"
+      }
+    },
+    {
+      "name": "Three of Cups",
+      "name_short": "c03",
+      "value": "Three",
+      "value_int": 3,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c03.jpg",
+      "keywords": [
+        "growth",
+        "collaboration",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A harmonious union signifies joyful partnership.",
+          "The card suggests a deep emotional connection between two people."
+        ],
+        "shadow": [
+          "Challenges in the relationship indicate emotional detachment or conflict.",
+          "This reveals difficulties in collaboration where shared feelings are strained."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:27:24Z"
+      }
+    },
+    {
+      "name": "Four of Cups",
+      "name_short": "c04",
+      "value": "Four",
+      "value_int": 4,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c04.jpg",
+      "keywords": [
+        "foundation",
+        "stability",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "Acknowledge the present emotional state; recognize that opportunities for growth are available but require introspection.",
+          "The card suggests a focus on inner feelings, indicating a period where emotional clarity is paramount."
+        ],
+        "shadow": [
+          "Indicates emotional stagnation or discontent; feeling stagnant and lacking necessary emotional energy.",
+          "Suggests an unwillingness to address current feelings, pointing toward overlooked opportunities for emotional fulfillment."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:27:40Z"
+      }
+    },
+    {
+      "name": "Five of Cups",
+      "name_short": "c05",
+      "value": "Five",
+      "value_int": 5,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c05.jpg",
+      "keywords": [
+        "challenge",
+        "disruption",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "challenge is a test of resilience",
+          "water represents emotional flow"
+        ],
+        "shadow": [
+          "disruption brings necessary change",
+          "emotion requires careful attention"
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:28:03Z"
+      }
+    },
+    {
+      "name": "Six of Cups",
+      "name_short": "c06",
+      "value": "Six",
+      "value_int": 6,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c06.jpg",
+      "keywords": [
+        "harmony",
+        "exchange",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A period of nostalgic warmth and sweet recollection.",
+          "The harmonious sharing of deep emotional connections and shared joy."
+        ],
+        "shadow": [
+          "Emotional stagnation or a lack of true heartfelt connection.",
+          "An exchange that feels superficial, lacking genuine empathy or sincere affection."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:28:18Z"
+      }
+    },
+    {
+      "name": "Seven of Cups",
+      "name_short": "c07",
+      "value": "Seven",
+      "value_int": 7,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c07.jpg",
+      "keywords": [
+        "assessment",
+        "perseverance",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A period of creative potential where ideas are abundant.",
+          "An invitation to explore diverse possibilities and visions."
+        ],
+        "shadow": [
+          "Indicates a lack of focus or scattered energy in the vision.",
+          "Suggests an emotional challenge requiring clear perception for clarity."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:28:32Z"
+      }
+    },
+    {
+      "name": "Eight of Cups",
+      "name_short": "c08",
+      "value": "Eight",
+      "value_int": 8,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c08.jpg",
+      "keywords": [
+        "movement",
+        "mastery",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A significant emotional departure or necessary letting go from past attachments.",
+          "The realization that some relationships are destined to end for growth."
+        ],
+        "shadow": [
+          "Emotional stagnation; feeling stuck in unresolved feelings or lingering sorrow.",
+          "A failure to move on, resulting in a sense of being weighed down by emotional baggage."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:28:51Z"
+      }
+    },
+    {
+      "name": "Nine of Cups",
+      "name_short": "c09",
+      "value": "Nine",
+      "value_int": 9,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c09.jpg",
+      "keywords": [
+        "culmination",
+        "resilience",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "Nine of Cups invites culmination and clear engagement with the moment.",
+          "It encourages practical trust in resilience as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, Nine of Cups can point to blocked culmination or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance resilience."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:29:31Z",
+        "warning": "using built-in fallback after invalid model response: Model response for Nine of Cups did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"The Nine of Cups signifies a joyful realization where deep emotional fulfillment is achieved.\"],\"reversed\":[\"Reversed, the card suggests that true emotional contentment may be overshadowed by challenges to inner peace.\"] }"
+      }
+    },
+    {
+      "name": "Ten of Cups",
+      "name_short": "c10",
+      "value": "Ten",
+      "value_int": 10,
+      "suit": "cups",
+      "type": "minor",
+      "img": "c10.jpg",
+      "keywords": [
+        "completion",
+        "burden",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A harmonious union signifies a deep emotional fulfillment achieved through shared joy.",
+          "The card suggests a perfect relationship where true happiness is found in loving partnership."
+        ],
+        "shadow": [
+          "This placement indicates an emotional imbalance or a feeling of being overwhelmed by the depth of affection.",
+          "It points to potential stagnation, suggesting that a desired union might be hindered by unexpected burdens."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:29:47Z"
+      }
+    },
+    {
+      "name": "Page of Cups",
+      "name_short": "cpage",
+      "value": "Page",
+      "value_int": 11,
+      "suit": "cups",
+      "type": "minor",
+      "img": "cpage.jpg",
+      "keywords": [
+        "study",
+        "message",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A sudden emotional realization offering clarity on feelings.",
+          "A beautiful opportunity for emotional connection or expression."
+        ],
+        "shadow": [
+          "Emotional confusion stemming from a lack of clear direction.",
+          "An intense wave of feeling that requires genuine emotional processing."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:29:59Z"
+      }
+    },
+    {
+      "name": "Knight of Cups",
+      "name_short": "cknight",
+      "value": "Knight",
+      "value_int": 12,
+      "suit": "cups",
+      "type": "minor",
+      "img": "cknight.jpg",
+      "keywords": [
+        "pursuit",
+        "action",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A charming personality enters your life with a romantic gesture.",
+          "The Knight of Cups represents a gentle emotional offering or artistic expression."
+        ],
+        "shadow": [
+          "Lack of genuine interest; the opportunity is missed.",
+          "Emotional stagnation, suggesting a feeling of unfulfilled desire or superficiality."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:30:16Z"
+      }
+    },
+    {
+      "name": "Queen of Cups",
+      "name_short": "cqueen",
+      "value": "Queen",
+      "value_int": 13,
+      "suit": "cups",
+      "type": "minor",
+      "img": "cqueen.jpg",
+      "keywords": [
+        "maturity",
+        "care",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "Queen of Cups invites maturity and clear engagement with the moment.",
+          "It encourages practical trust in care as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, Queen of Cups can point to blocked maturity or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance care."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:30:52Z",
+        "warning": "using built-in fallback after invalid model response: Model response for Queen of Cups did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"The Queen of Cups embodies emotional depth and intuitive insight.\"],\"reversed\":[\"Her reversed energy suggests a need for emotional clarity and thoughtful reflection.\"]}"
+      }
+    },
+    {
+      "name": "King of Cups",
+      "name_short": "cking",
+      "value": "King",
+      "value_int": 14,
+      "suit": "cups",
+      "type": "minor",
+      "img": "cking.jpg",
+      "keywords": [
+        "mastery",
+        "leadership",
+        "water",
+        "emotion"
+      ],
+      "meanings": {
+        "light": [
+          "A master of emotional intuition and deep feeling.",
+          "Represents the perfect blend of intellect and heart."
+        ],
+        "shadow": [
+          "Challenges in controlling emotions or a lack of true emotional depth.",
+          "Suggests an imbalance between passion and control."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:31:05Z"
+      }
+    },
+    {
+      "name": "Ace of Swords",
+      "name_short": "sace",
+      "value": "Ace",
+      "value_int": 1,
+      "suit": "swords",
+      "type": "minor",
+      "img": "sace.jpg",
+      "keywords": [
+        "seed",
+        "potential",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A sharp breakthrough in intellect.",
+          "Clear decisive action that cuts through confusion."
+        ],
+        "shadow": [
+          "Sharp mental clarity is lost.",
+          "Sudden realization or intellectual victory."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:31:16Z"
+      }
+    },
+    {
+      "name": "Two of Swords",
+      "name_short": "s02",
+      "value": "Two",
+      "value_int": 2,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s02.jpg",
+      "keywords": [
+        "choice",
+        "balance",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A moment of necessary stillness where clarity is achieved.",
+          "The realization that a decision brings true peace."
+        ],
+        "shadow": [
+          "Conflict or stagnation resulting from avoiding difficult truths.",
+          "Decision paralysis, where the lack of choice leads to emotional imbalance."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:31:32Z"
+      }
+    },
+    {
+      "name": "Three of Swords",
+      "name_short": "s03",
+      "value": "Three",
+      "value_int": 3,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s03.jpg",
+      "keywords": [
+        "growth",
+        "collaboration",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A sharp realization cuts through illusion.",
+          "Embrace clear emotional breakthroughs."
+        ],
+        "shadow": [
+          "Painful separation reveals truth.",
+          "Triumph over painful disillusionment."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:31:45Z"
+      }
+    },
+    {
+      "name": "Four of Swords",
+      "name_short": "s04",
+      "value": "Four",
+      "value_int": 4,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s04.jpg",
+      "keywords": [
+        "foundation",
+        "stability",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A period of necessary reflection where clarity is achieved.",
+          "Introspection leads to a clearer understanding of one's path."
+        ],
+        "shadow": [
+          "The mental exhaustion or stagnation resulting from overthinking.",
+          "A temporary retreat for strategic reassessment before moving forward."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:31:59Z"
+      }
+    },
+    {
+      "name": "Five of Swords",
+      "name_short": "s05",
+      "value": "Five",
+      "value_int": 5,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s05.jpg",
+      "keywords": [
+        "challenge",
+        "disruption",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A sharp conflict where victory is elusive.",
+          "The realization that some gains cost more than the losses."
+        ],
+        "shadow": [
+          "Strategic defeat leading to necessary change.",
+          "An intellectual battle yielding clarity through decisive action."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:32:10Z"
+      }
+    },
+    {
+      "name": "Six of Swords",
+      "name_short": "s06",
+      "value": "Six",
+      "value_int": 6,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s06.jpg",
+      "keywords": [
+        "harmony",
+        "exchange",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "Transitioning from conflict to peace.",
+          "A necessary shift in perspective."
+        ],
+        "shadow": [
+          "Emotional detachment during change.",
+          "Exchanging burdens for clarity."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:32:20Z"
+      }
+    },
+    {
+      "name": "Seven of Swords",
+      "name_short": "s07",
+      "value": "Seven",
+      "value_int": 7,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s07.jpg",
+      "keywords": [
+        "assessment",
+        "perseverance",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A decisive action is required immediately.",
+          "The sword signifies a strategic victory."
+        ],
+        "shadow": [
+          "Anxiety over a perceived loss of opportunity.",
+          "Swiftness in decision making but with potential pitfalls."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:32:32Z"
+      }
+    },
+    {
+      "name": "Eight of Swords",
+      "name_short": "s08",
+      "value": "Eight",
+      "value_int": 8,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s08.jpg",
+      "keywords": [
+        "movement",
+        "mastery",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "Eight of Swords invites movement and clear engagement with the moment.",
+          "It encourages practical trust in mastery as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, Eight of Swords can point to blocked movement or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance mastery."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:33:14Z",
+        "warning": "using built-in fallback after invalid model response: Model response for Eight of Swords did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"The Eight of Swords signifies a feeling of being trapped by limiting thoughts and perceptions.\"],\"reversed\":[\"Reversed, the card suggests that true freedom is found through overcoming mental limitations.\"] }"
+      }
+    },
+    {
+      "name": "Nine of Swords",
+      "name_short": "s09",
+      "value": "Nine",
+      "value_int": 9,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s09.jpg",
+      "keywords": [
+        "culmination",
+        "resilience",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A sudden realization brings clarity.",
+          "Inner peace emerges from intense struggle."
+        ],
+        "shadow": [
+          "Exhaustion after mental battles.",
+          "The mind struggles with overwhelming thoughts."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:33:25Z"
+      }
+    },
+    {
+      "name": "Ten of Swords",
+      "name_short": "s10",
+      "value": "Ten",
+      "value_int": 10,
+      "suit": "swords",
+      "type": "minor",
+      "img": "s10.jpg",
+      "keywords": [
+        "completion",
+        "burden",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A definitive end signifies a necessary conclusion for a finished phase.",
+          "The sword represents the severance of painful ties or difficult circumstances."
+        ],
+        "shadow": [
+          "Represents an avoided ending, suggesting a lingering burden remains unresolved.",
+          "Indicates a finality that is unwelcome, signifying completion with emotional weight."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:33:40Z"
+      }
+    },
+    {
+      "name": "Page of Swords",
+      "name_short": "spage",
+      "value": "Page",
+      "value_int": 11,
+      "suit": "swords",
+      "type": "minor",
+      "img": "spage.jpg",
+      "keywords": [
+        "study",
+        "message",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "study the principles of communication and clear thinking",
+          "message clarity is achieved through precise articulation"
+        ],
+        "shadow": [
+          "thought often becomes a confusing stream of ideas",
+          "air reveals hidden truths in unexpected ways"
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:34:03Z"
+      }
+    },
+    {
+      "name": "Knight of Swords",
+      "name_short": "sknight",
+      "value": "Knight",
+      "value_int": 12,
+      "suit": "swords",
+      "type": "minor",
+      "img": "sknight.jpg",
+      "keywords": [
+        "pursuit",
+        "action",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A focused drive toward a goal; decisive execution in the pursuit.",
+          "Sharp intellectual clarity achieved through swift action."
+        ],
+        "shadow": [
+          "Action stalled by doubt or confusion; thinking becomes scattered and analytical.",
+          "The mind races too fast; clear thoughts lead to frantic effort."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:34:16Z"
+      }
+    },
+    {
+      "name": "Queen of Swords",
+      "name_short": "squeen",
+      "value": "Queen",
+      "value_int": 13,
+      "suit": "swords",
+      "type": "minor",
+      "img": "squeen.jpg",
+      "keywords": [
+        "maturity",
+        "care",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A sharp intellect provides clarity and decisive action.",
+          "Embraces objective truth with a keen analytical mind."
+        ],
+        "shadow": [
+          "Emotional detachment leads to cold judgment or intellectual aloofness.",
+          "The Queen uses clear thinking to cut through confusion."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:34:32Z"
+      }
+    },
+    {
+      "name": "King of Swords",
+      "name_short": "sking",
+      "value": "King",
+      "value_int": 14,
+      "suit": "swords",
+      "type": "minor",
+      "img": "sking.jpg",
+      "keywords": [
+        "mastery",
+        "leadership",
+        "air",
+        "thought"
+      ],
+      "meanings": {
+        "light": [
+          "A commanding intellect prevails through sharp decision-making.",
+          "Authority is established; intellectual clarity drives strategic action."
+        ],
+        "shadow": [
+          "The mind becomes clouded by conflicting thoughts or cold logic.",
+          "Leadership struggles with clear communication and the execution of decisive plans."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:34:47Z"
+      }
+    },
+    {
+      "name": "Ace of Pentacles",
+      "name_short": "pace",
+      "value": "Ace",
+      "value_int": 1,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "pace.jpg",
+      "keywords": [
+        "seed",
+        "potential",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "A new opportunity for tangible growth is present.",
+          "It signifies a valuable resource or chance that needs capitalizing on."
+        ],
+        "shadow": [
+          "The potential remains dormant or requires careful assessment.",
+          "Resources are limited; the seed lacks immediate benefit."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:35:01Z"
+      }
+    },
+    {
+      "name": "Two of Pentacles",
+      "name_short": "p02",
+      "value": "Two",
+      "value_int": 2,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p02.jpg",
+      "keywords": [
+        "choice",
+        "balance",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "The card suggests a need for careful decision-making regarding shared assets.",
+          "It signifies achieving equilibrium through thoughtful action; finding the right measure."
+        ],
+        "shadow": [
+          "This indicates a struggle with balancing priorities or juggling dual responsibilities effectively.",
+          "It points to an imbalance in resources, suggesting a lack of clear structure or necessary decisions."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:35:17Z"
+      }
+    },
+    {
+      "name": "Three of Pentacles",
+      "name_short": "p03",
+      "value": "Three",
+      "value_int": 3,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p03.jpg",
+      "keywords": [
+        "growth",
+        "collaboration",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "A signifies a solid foundation for teamwork and shared projects.",
+          "It suggests successful collaboration through skilled effort and mutual appreciation."
+        ],
+        "shadow": [
+          "The outcome points toward potential stagnation or conflict in the project's execution.",
+          "Challenges indicate that group efforts may falter due to resource scarcity or miscommunication."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:35:30Z"
+      }
+    },
+    {
+      "name": "Four of Pentacles",
+      "name_short": "p04",
+      "value": "Four",
+      "value_int": 4,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p04.jpg",
+      "keywords": [
+        "foundation",
+        "stability",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "Four of Pentacles invites foundation and clear engagement with the moment.",
+          "It encourages practical trust in stability as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, Four of Pentacles can point to blocked foundation or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance stability."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:36:02Z",
+        "warning": "using built-in fallback after invalid model response: Model response for Four of Pentacles did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"The Four of Pentacles represents a solid foundation and the need to secure existing assets.\"],\"reversed\":[\"This card suggests that true security is achieved through careful stewardship and resource management.\"]}"
+      }
+    },
+    {
+      "name": "Five of Pentacles",
+      "name_short": "p05",
+      "value": "Five",
+      "value_int": 5,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p05.jpg",
+      "keywords": [
+        "challenge",
+        "disruption",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "A period of difficulty where a sense of isolation is felt.",
+          "The lesson here is that true security comes from inner strength despite external challenges."
+        ],
+        "shadow": [
+          "An indication of feeling financially insecure or lacking essential resources.",
+          "This suggests a necessary upheaval to re-establish stability and practical foundations."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:36:16Z"
+      }
+    },
+    {
+      "name": "Six of Pentacles",
+      "name_short": "p06",
+      "value": "Six",
+      "value_int": 6,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p06.jpg",
+      "keywords": [
+        "harmony",
+        "exchange",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "Six of Pentacles invites harmony and clear engagement with the moment.",
+          "It encourages practical trust in exchange as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, Six of Pentacles can point to blocked harmony or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance exchange."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:36:48Z",
+        "warning": "using built-in fallback after invalid model response: Model response for Six of Pentacles did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"Charity offers spiritual insight into selfless generosity and divine grace.\"],\"reversed\":[\"The offering reveals that true abundance lies in equitable sharing, not just material gain.\"]}"
+      }
+    },
+    {
+      "name": "Seven of Pentacles",
+      "name_short": "p07",
+      "value": "Seven",
+      "value_int": 7,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p07.jpg",
+      "keywords": [
+        "assessment",
+        "perseverance",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "A time for evaluation where you assess your progress.",
+          "The opportunity to reassess current efforts and gains."
+        ],
+        "shadow": [
+          "Stagnation in resource management or a pause in the pursuit of goals.",
+          "Difficulty assessing worthiness; a feeling that resources are insufficient."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:37:01Z"
+      }
+    },
+    {
+      "name": "Eight of Pentacles",
+      "name_short": "p08",
+      "value": "Eight",
+      "value_int": 8,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p08.jpg",
+      "keywords": [
+        "movement",
+        "mastery",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "Eight of Pentacles invites movement and clear engagement with the moment.",
+          "It encourages practical trust in mastery as the path unfolds."
+        ],
+        "shadow": [
+          "Reversed, Eight of Pentacles can point to blocked movement or hesitation around the lesson.",
+          "It asks for patience, reflection, and a grounded way to rebalance mastery."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:37:41Z",
+        "warning": "using built-in fallback after invalid model response: Model response for Eight of Pentacles did not include two usable upright and two usable reversed sentences. Response preview: {\"upright\":[\"The Eight of Pentacles signifies a focus on craftsmanship and the dedication required to achieve true mastery in any skill.\",\"Reversed, this card suggests that effort may be lacking; it indicates an imbalance where one needs mo"
+      }
+    },
+    {
+      "name": "Nine of Pentacles",
+      "name_short": "p09",
+      "value": "Nine",
+      "value_int": 9,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p09.jpg",
+      "keywords": [
+        "culmination",
+        "resilience",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "A realization of personal strength and independence.",
+          "The achievement of a desired goal through self-reliance."
+        ],
+        "shadow": [
+          "An indication that the achieved status might be fragile or requires careful management.",
+          "The need to cultivate deep roots by leveraging existing resources."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:37:53Z"
+      }
+    },
+    {
+      "name": "Ten of Pentacles",
+      "name_short": "p10",
+      "value": "Ten",
+      "value_int": 10,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "p10.jpg",
+      "keywords": [
+        "completion",
+        "burden",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "completion signifies a successful culmination of efforts and a stable foundation for the future",
+          "resources indicate abundance through established structure and reliable assets."
+        ],
+        "shadow": [
+          "burden suggests an overwhelming responsibility that needs careful management to avoid crushing one's spirit",
+          "earth points toward grounded stability where practical resources are secured."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:38:16Z"
+      }
+    },
+    {
+      "name": "Page of Pentacles",
+      "name_short": "ppage",
+      "value": "Page",
+      "value_int": 11,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "ppage.jpg",
+      "keywords": [
+        "study",
+        "message",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "Pentacles represent tangible assets and material success.",
+          "This card signifies stability, financial security, and grounded achievement."
+        ],
+        "shadow": [
+          "The energy suggests a lack of practical application or blocked potential.",
+          "It indicates the need to re-evaluate current resource allocation or investment strategies."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:38:30Z"
+      }
+    },
+    {
+      "name": "Knight of Pentacles",
+      "name_short": "pknight",
+      "value": "Knight",
+      "value_int": 12,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "pknight.jpg",
+      "keywords": [
+        "pursuit",
+        "action",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "The Knight embodies focused effort and steady application in a pursuit.",
+          "This card signifies grounded ambition where the individual applies disciplined energy towards tangible goals."
+        ],
+        "shadow": [
+          "Reversed suggests slow or stagnant progress due to over-analysis or inertia.",
+          "It indicates a lack of action, meaning potential is undermined by hesitation or excessive introspection."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:38:45Z"
+      }
+    },
+    {
+      "name": "Queen of Pentacles",
+      "name_short": "pqueen",
+      "value": "Queen",
+      "value_int": 13,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "pqueen.jpg",
+      "keywords": [
+        "maturity",
+        "care",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "The card signifies a mature, grounded approach to financial matters.",
+          "It represents the ability to manage resources effectively in a practical setting."
+        ],
+        "shadow": [
+          "This suggests a lack of confidence or stability regarding one's material assets.",
+          "Indicates a need for careful management and a shift towards more practical care."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:38:58Z"
+      }
+    },
+    {
+      "name": "King of Pentacles",
+      "name_short": "pking",
+      "value": "King",
+      "value_int": 14,
+      "suit": "pentacles",
+      "type": "minor",
+      "img": "pking.jpg",
+      "keywords": [
+        "mastery",
+        "leadership",
+        "earth",
+        "resources"
+      ],
+      "meanings": {
+        "light": [
+          "The King embodies a grounded authority and masterful control over tangible assets.",
+          "It signifies successful execution of plans and the establishment of solid financial security."
+        ],
+        "shadow": [
+          "This card suggests potential stagnation or a lack of true authority in resource management.",
+          "Interpretation points toward an imbalance where leadership struggles with material resources."
+        ]
+      },
+      "ollamaGenerated": {
+        "model": "tripolskypetr/gemma4-uncensored-aggressive:latest",
+        "generatedAt": "2026-07-24T21:39:11Z"
+      }
+    }
+  ],
+  "generatedBy": "create_data.sh",
+  "generatedAt": "2026-07-24T21:39:11Z",
+  "ollama": {
+    "url": "http://localhost:11434",
+    "model": "tripolskypetr/gemma4-uncensored-aggressive:latest"
+  }
+}
