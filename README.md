@@ -59,6 +59,27 @@ Use the included deployment script to build a minimal Node.js image and run Cosm
 
 Then visit `http://localhost:3018` unless you selected a custom port. Docker deployments keep server-side settings, deck order, and mirrored tarot assets in the `cosmic-tarot-data` Docker volume.
 
+
+### Generate local Ollama card meanings
+
+Use the companion generator to ask a local Ollama model for fresh upright and reversed meanings for all 78 tarot cards. The script uses Bash plus the Python 3 standard library, includes the full Rider-Waite-Smith card list, preserves existing card image metadata when a source database is available, and writes a `tarot-images.json` file that the app can serve directly.
+
+```bash
+OLLAMA_MODEL=llama3.1 ./create_data.sh
+```
+
+By default, the generated database is written to `data/assets/tarot-images.json`, which `node server.js` serves at `/assets/tarot-images.json`. You can point the script at a different Ollama server, source file, or output file with environment variables:
+
+```bash
+OLLAMA_URL=http://localhost:11434 \
+OLLAMA_MODEL=mistral \
+SOURCE_FILE=data/assets/tarot-images.json \
+OUTPUT_FILE=data/assets/tarot-images.json \
+./create_data.sh
+```
+
+Run `./create_data.sh --help` for all options, or `./create_data.sh --list-cards` to print the 78-card sequence without calling Ollama.
+
 ### Optional AI setup
 
 Open **AI Setup** in the app header to configure one of the supported providers:
