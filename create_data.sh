@@ -307,14 +307,32 @@ def find_first_meanings(parsed, key_candidates):
     return []
 
 
+def fallback_meanings(card):
+    keywords = [keyword for keyword in (card.get('keywords') or []) if isinstance(keyword, str) and keyword.strip()]
+    if not keywords:
+        keywords = [card.get('value') or card['name'], card.get('suit') or 'tarot']
+    primary = keywords[0]
+    secondary = keywords[1] if len(keywords) > 1 else keywords[0]
+    upright = [
+        f'{card["name"]} invites {primary} and clear engagement with the moment.',
+        f'It encourages practical trust in {secondary} as the path unfolds.',
+    ]
+    reversed_meanings = [
+        f'Reversed, {card["name"]} can point to blocked {primary} or hesitation around the lesson.',
+        f'It asks for patience, reflection, and a grounded way to rebalance {secondary}.',
+    ]
+    return upright, reversed_meanings
+
+
 def parse_ollama_meanings(card, response_text):
     parsed = extract_json_object(response_text)
     upright = find_first_meanings(parsed, ('upright', 'light', 'positive'))
     reversed_meanings = find_first_meanings(parsed, ('reversed', 'reverse', 'inverted', 'shadow', 'challenge', 'challenging'))
-    if not upright or not reversed_meanings:
+    if not upright and not reversed_meanings:
         preview = response_text.strip().replace('\n', ' ')[:240]
         raise ValueError(f'Model response for {card["name"]} did not include recognizable upright and reversed meanings. Response preview: {preview}')
-    return upright, reversed_meanings
+    fallback_upright, fallback_reversed = fallback_meanings(card)
+    return upright or fallback_upright, reversed_meanings or fallback_reversed
 
 
 def build_repair_prompt(card, previous_response):
@@ -390,17 +408,32 @@ def ask_ollama(card):
         response_text = request_ollama(prompt, temperature)
         last_response = response_text
         try:
-            return parse_ollama_meanings(card, response_text)
+            return (*parse_ollama_meanings(card, response_text), False)
         except ValueError as error:
             last_error = error
 
     if last_response:
         response_text = request_ollama(build_repair_prompt(card, last_response), 0.0)
         try:
-            return parse_ollama_meanings(card, response_text)
+            return (*parse_ollama_meanings(card, response_text), False)
         except ValueError as error:
             last_error = error
-    raise last_error
+
+    warning = f'using built-in fallback after invalid model response: {last_error}'
+    return (*fallback_meanings(card), warning)
+
+
+def write_output(database, enriched_cards):
+    output = dict(database)
+    output['description'] = output.get('description') or 'Cosmic Tarot card database'
+    output['generatedBy'] = 'create_data.sh'
+    output['generatedAt'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+    output['ollama'] = {'url': ollama_url, 'model': model}
+    output['cards'] = enriched_cards
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    with output_file.open('w', encoding='utf-8') as file_handle:
+        json.dump(output, file_handle, indent=2)
+        file_handle.write('\n')
 
 
 def main():
@@ -423,28 +456,21 @@ def main():
     enriched_cards = []
     for index, card in enumerate(cards, start=1):
         print(f'{index:02d}/{len(cards)} {card["name"]} ... ', end='', flush=True)
-        upright, reversed_meanings = ask_ollama(card)
+        upright, reversed_meanings, warning = ask_ollama(card)
         meanings = dict(card.get('meanings') or {})
         meanings['light'] = upright
         meanings['shadow'] = reversed_meanings
         enriched_card = dict(card)
         enriched_card['meanings'] = meanings
         enriched_card['ollamaGenerated'] = {'model': model, 'generatedAt': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
+        if warning:
+            enriched_card['ollamaGenerated']['warning'] = warning
         enriched_cards.append(enriched_card)
-        print('done')
+        write_output(database, enriched_cards + cards[index:])
+        print('done' if not warning else f'done ({warning})')
         if delay_seconds:
             time.sleep(delay_seconds)
 
-    output = dict(database)
-    output['description'] = output.get('description') or 'Cosmic Tarot card database'
-    output['generatedBy'] = 'create_data.sh'
-    output['generatedAt'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
-    output['ollama'] = {'url': ollama_url, 'model': model}
-    output['cards'] = enriched_cards
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    with output_file.open('w', encoding='utf-8') as file_handle:
-        json.dump(output, file_handle, indent=2)
-        file_handle.write('\n')
     print(f'Wrote {len(enriched_cards)} cards to {output_file}')
 
 
