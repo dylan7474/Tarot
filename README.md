@@ -33,7 +33,7 @@ To make settings and the physical deck order perpetual across browsers and sessi
 node server.js
 ```
 
-Then visit `http://localhost:8000`. The app stores shared settings, AI provider configuration, Ollama model choices, and the current physical deck order in `data/server-state.json`. The server also mirrors the tarot card metadata and card artwork from GitHub into `data/assets/` on startup or the first `/assets/` request when the cache is missing, enriches any cards that lack upright or reversed descriptions, then serves them locally from `/assets/tarot-images.json` and `/assets/cards/<image>.jpg` so browsers do not repeatedly contact GitHub for card assets. Set `PORT` to choose a different port, `TAROT_DATA_DIR` to store state and cached assets somewhere outside the repository, or `TAROT_ASSET_CACHE_DIR` to store only the mirrored tarot assets elsewhere:
+Then visit `http://localhost:8000`. The app stores shared settings, AI provider configuration, Ollama model choices, and the current physical deck order in `data/server-state.json`. The server also mirrors the tarot card metadata and card artwork from GitHub into `data/assets/` on startup or the first `/assets/` request when the cache is missing, normalizes any provided upright or reversed descriptions without inventing missing meanings, then serves them locally from `/assets/tarot-images.json` and `/assets/cards/<image>.jpg` so browsers do not repeatedly contact GitHub for card assets. Set `PORT` to choose a different port, `TAROT_DATA_DIR` to store state and cached assets somewhere outside the repository, or `TAROT_ASSET_CACHE_DIR` to store only the mirrored tarot assets elsewhere:
 
 ```bash
 PORT=3018 TAROT_DATA_DIR=/var/lib/cosmic-tarot node server.js
