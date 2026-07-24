@@ -152,6 +152,13 @@ def print_numbered_models(models):
         print(f'{index:02d}. {model_name}')
 
 
+def open_prompt_terminal():
+    try:
+        return open('/dev/tty', 'r+', encoding='utf-8')
+    except OSError:
+        return None
+
+
 def select_ollama_model():
     global model
     if model:
@@ -161,21 +168,24 @@ def select_ollama_model():
     if not models:
         raise RuntimeError(f'No Ollama models are installed at {ollama_url}. Run `ollama pull llama3.1` or set OLLAMA_MODEL to a remote model name.')
 
-    if not sys.stdin.isatty():
+    terminal = open_prompt_terminal()
+    if terminal is None:
         model = models[0]
-        print(f'OLLAMA_MODEL was not set and input is non-interactive; using installed model: {model}')
+        print(f'OLLAMA_MODEL was not set and no interactive terminal is available; using installed model: {model}')
         return
 
-    print_numbered_models(models)
-    while True:
-        choice = input(f'Select a model [1-{len(models)}]: ').strip()
-        if choice.isdigit():
-            index = int(choice)
-            if 1 <= index <= len(models):
-                model = models[index - 1]
-                print(f'Using Ollama model: {model}')
-                return
-        print('Please enter one of the numbered model choices.')
+    with terminal:
+        print_numbered_models(models)
+        while True:
+            print(f'Select a model [1-{len(models)}]: ', end='', flush=True, file=terminal)
+            choice = terminal.readline().strip()
+            if choice.isdigit():
+                index = int(choice)
+                if 1 <= index <= len(models):
+                    model = models[index - 1]
+                    print(f'Using Ollama model: {model}')
+                    return
+            print('Please enter one of the numbered model choices.', file=terminal)
 
 
 def verify_selected_model():
